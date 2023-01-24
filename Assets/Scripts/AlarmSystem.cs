@@ -11,6 +11,7 @@ public class AlarmSystem : MonoBehaviour
     private bool _isPlaying;
     private float _maxValue = 1f;
     private float _minValue = 0;
+    private float changeRate = 0.3f;
 
     private void OnEnable()
     {
@@ -55,7 +56,7 @@ public class AlarmSystem : MonoBehaviour
 
         while (_audioSource.volume != targetVolume)
         {
-            _audioSource.volume = Mathf.MoveTowards(_audioSource.volume, targetVolume, 0.3f * Time.deltaTime);
+            _audioSource.volume = Mathf.MoveTowards(_audioSource.volume, targetVolume, changeRate * Time.deltaTime);
 
             if (_audioSource.volume == _minValue)
             {
